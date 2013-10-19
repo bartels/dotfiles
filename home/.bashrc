@@ -70,7 +70,7 @@ fi
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
     for f in ~/.bashrc.d/*; do
-        if [ -x $f ]; then 
+        if [ -x $f -a -f $f ]; then
             . $f
         fi
     done
