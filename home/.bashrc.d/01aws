@@ -1,0 +1,10 @@
+# Handles exporting environment variables used by aws & ec2 tools.
+# Environment variables should be put in a file at ~/.aws/name/export
+aws_export() {
+    source ~/.aws/$1/export
+}
+_aws_export_complete() {
+    arg="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(ls -l ~/.aws/ | grep ^d | awk '{print $NF}' | grep "$arg") )
+}
+complete -o default -o nospace -F _aws_export_complete aws_export

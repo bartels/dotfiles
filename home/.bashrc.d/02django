@@ -1,0 +1,25 @@
+# Django dev environment setup
+djstart() {
+    module="$( pwd -P | rev | cut -d "/" -f1 | rev )"
+    if [ -z $1 ]; then
+        project="$module"
+    else
+        project=$1
+    fi
+    export PYTHONPATH="$(pwd -P)/../"
+    export DJANGO_SETTINGS_MODULE="$module.settings"
+    export DJANGO_ENV=dev
+    echo $project
+    workon $project && tmux new -s $project
+}
+_djstart_complete() {
+    arg="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(ls -l $WORKON_HOME | grep ^d | awk '{print $NF}' | grep "$arg") )
+}
+complete -o default -o nospace -F _djstart_complete djstart
+
+# Shortcut for running django-admin.py
+dj() {
+    django-admin.py "$@"
+}
+complete -o default -F _django_completion dj
