@@ -78,3 +78,8 @@ fi
 
 # vi mode
 set -o vi
+
+# environment
+EDITOR=/usr/bin/vim
+VISUAL=$EDITOR
+PAGER=/usr/bin/less
