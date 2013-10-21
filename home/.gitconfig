@@ -1,0 +1,24 @@
+[user]
+	name = Eric Bartels
+	email = ebartels@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[push]
+	default = simple
+[alias]
+	co = checkout
+	st = status
+	br = branch
+[color]
+	diff = auto
+	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = white
+[color "branch"]
+	current = green bold
+	local = normal
+	remote = white
+[heroku]
+	account = personal
