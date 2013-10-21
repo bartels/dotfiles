@@ -11,6 +11,8 @@ function symlink_dotfiles {
     for file in $1/{.[!.]*,*}; do
         # directories
         if [ -d "$file" ]; then
+            dest_dir=$HOME${file#$DOTFILE_PATH}
+            test -e "$dest_dir" || mkdir -p $dest_dir
             symlink_dotfiles $file
         # files
         elif [ -f "$file" ]; then
