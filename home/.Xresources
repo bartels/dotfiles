@@ -1,7 +1,7 @@
 !!!!!!!!!!!
 !! Colors
 !!!!!!!!!!!
-*.background: [80]#000000
+*.background: #000000
 *.foreground: #ffffff
 
 !! Black
@@ -37,6 +37,7 @@
 !!!!!!!!!!!
 URxvt.depth: 32
 URxvt.geometry: 150x50
+URxvt.background: [80]#000000
 
 ! URxvt.colorBD: colour
 ! URxvt.colorIT: colour
