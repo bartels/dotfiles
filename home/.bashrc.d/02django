@@ -10,7 +10,7 @@ djstart() {
     export DJANGO_SETTINGS_MODULE="$module.settings"
     export DJANGO_ENV=dev
     echo $project
-    workon $project && tmux new -s $project
+    workon $project && ( tmux new -s $project || tmux attach -t $project )
 }
 _djstart_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
