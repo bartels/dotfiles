@@ -6,11 +6,17 @@ djstart() {
     else
         project=$1
     fi
-    export PYTHONPATH="$(pwd -P)/../"
-    export DJANGO_SETTINGS_MODULE="$module.settings"
-    export DJANGO_ENV=dev
-    echo $project
-    workon $project && ( tmux new -s $project || tmux attach -t $project )
+
+    (
+        export PYTHONPATH="$(pwd -P)/../" \
+               DJANGO_SETTINGS_MODULE="$module.settings" \
+               DJANGO_ENV=dev
+        workon $project
+        if [ $? -eq 0 ]; then
+            tmux new -s $project || tmux attach -t $project
+        fi
+    )
+
 }
 _djstart_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
