@@ -8,3 +8,6 @@ _aws_export_complete() {
     COMPREPLY=( $(ls -l ~/.aws/ | grep ^d | awk '{print $NF}' | grep "$arg") )
 }
 complete -o default -o nospace -F _aws_export_complete aws_export
+
+# completion for aws cli
+complete -C aws_completer aws
