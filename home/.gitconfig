@@ -9,6 +9,7 @@
 	co = checkout
 	st = status
 	br = branch
+        lg = log --graph --all --decorate --abbrev-commit
 [color]
 	diff = auto
 	ui = true
