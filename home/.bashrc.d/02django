@@ -8,9 +8,9 @@ djstart() {
     fi
 
     (
-        export PYTHONPATH="$(pwd -P)/../" \
-               DJANGO_SETTINGS_MODULE="$module.settings" \
-               DJANGO_ENV=dev
+        export PYTHONPATH="$(pwd -P)/../:$PYTHONPATH" \
+               DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
+               DJANGO_ENV=${DJANGO_ENV:-"dev"}
         workon $project
         if [ $? -eq 0 ]; then
             tmux new -s $project || tmux attach -t $project
