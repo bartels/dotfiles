@@ -8,10 +8,10 @@ alias gvime='gvim --remote-tab-silent'
 
 # silence gvim console messages
 function gvim {
-    vim -g $@ &>> ~/.xsession-errors
+    vim -g $@ 2>> ~/.xsession-errors
 }
 
 # silence emacs console messages
 function emacs {
-    emacs24 $@ &>> ~/.xsession-errors & disown
+    emacs24 $@ 2>> ~/.xsession-errors & disown
 }
