@@ -7,8 +7,14 @@ djstart() {
         project=$1
     fi
 
+    # get absolute path
+    pushd $(pwd)/../ > /dev/null
+    RUNPATH="$(pwd -P)"
+    popd > /dev/null
+
+    # Run a subprocess
     (
-        export PYTHONPATH="$(pwd -P)/../:$PYTHONPATH" \
+        export PYTHONPATH="$RUNPATH:$PYTHONPATH" \
                DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
                DJANGO_ENV=${DJANGO_ENV:-"dev"}
         workon $project
