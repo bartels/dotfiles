@@ -8,3 +8,5 @@ alias mv='mv -i'
 alias untar='tar xvf'
 alias untarz='tar xvfz'
 alias untarb='tar xvfj'
+
+alias tnew='new-tmux-from-dir-name'

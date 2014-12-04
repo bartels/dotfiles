@@ -15,3 +15,7 @@ function gvim {
 function emacs {
     emacs24 $@ 2>> ~/.xsession-errors & disown
 }
+
+function new-tmux-from-dir-name {
+    tmux new-session -As `basename $PWD`
+}
