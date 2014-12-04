@@ -9,4 +9,5 @@ alias untar='tar xvf'
 alias untarz='tar xvfz'
 alias untarb='tar xvfj'
 
+# Start tmux with
 alias tnew='new-tmux-from-dir-name'
