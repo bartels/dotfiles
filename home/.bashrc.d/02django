@@ -1,6 +1,6 @@
 # Django dev environment setup
 djstart() {
-    module="$( pwd -P | rev | cut -d "/" -f1 | rev )"
+    module="$(basename $PWD)"
     if [ -z $1 ]; then
         project="$module"
     else
