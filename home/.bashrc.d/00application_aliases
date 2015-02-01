@@ -16,6 +16,12 @@ function emacs {
     emacs24 $@ 2>> ~/.xsession-errors & disown
 }
 
-function new-tmux-from-dir-name {
-    tmux new-session -As `basename $PWD`
+function tmux-new-from-dir-name {
+    if [ -z $1 ]; then
+        sessionName=$(basename $PWD | sed 's/\./_/g')
+    else
+        sessionName=$1
+    fi
+    tmux new-session -As "$sessionName"
+    #tmux new-session -As `basename $PWD`
 }
