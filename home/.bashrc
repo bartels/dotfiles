@@ -30,8 +30,13 @@ shopt -s autocd
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Fix TERM for rxvt-unicode-256color (so remote hosts recognize us)
+# TERM color fixes
 case "$TERM" in
+    # so vim shows 256 colors
+    xterm)
+        TERM=xterm-256color
+        ;;
+    # Fix TERM for rxvt-unicode-256color (so remote hosts recognize us)
     rxvt-*256color)
         TERM=rxvt-unicode
         ;;
