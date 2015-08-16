@@ -11,3 +11,7 @@ alias untarb='tar xvfj'
 
 # Start tmux with
 alias tnew='tmux-new-from-dir-name'
+
+# ansible aliases
+alias ansible='vaultify ansible'
+alias ansible-playbook='vaultify ansible-playbook'
