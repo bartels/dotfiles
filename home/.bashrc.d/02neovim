@@ -1,0 +1,5 @@
+if type nvim 2> /dev/null > /dev/null; then
+    export EDITOR=nvim
+    alias vim='nvim'
+    alias vimdiff='vim -d'
+fi 

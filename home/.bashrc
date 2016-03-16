@@ -89,6 +89,6 @@ fi
 set -o vi
 
 # environment
-export EDITOR=/usr/bin/vim
+export EDITOR=vim
 export VISUAL=$EDITOR
-export PAGER=/usr/bin/less
+export PAGER=less

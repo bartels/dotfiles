@@ -4,8 +4,6 @@ alias open='xdg-open'
 alias tmux='tmux -2'
 alias node='env NODE_NO_READLINE=1 rlwrap -pGreen node'
 
-alias gvime='gvim --remote-tab-silent'
-
 # silence gvim console messages
 function gvim {
     vim -g $@ 2>> ~/.xsession-errors
