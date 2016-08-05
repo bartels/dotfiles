@@ -10,7 +10,7 @@
 	st = status
 	br = branch
 	lg = log --graph --all --decorate --abbrev-commit
-	edit = "!vim `git ls-files -m` -p"
+	edit = "!nvim `git ls-files -m` -p"
 [color]
 	diff = auto
 	ui = true
