@@ -24,6 +24,8 @@ djstart() {
     )
 
 }
+
+# djstart command completion
 _djstart_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
     COMPREPLY=( $(ls -l $WORKON_HOME | grep ^d | awk '{print $NF}' | grep "$arg") )
@@ -34,4 +36,6 @@ complete -o default -o nospace -F _djstart_complete djstart
 dj() {
     django-admin.py "$@"
 }
+
+# dj command completion
 complete -o default -F _django_completion dj

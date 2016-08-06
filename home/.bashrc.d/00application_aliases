@@ -1,7 +1,6 @@
 alias top='htop'
 alias service='sudo service'
 alias open='xdg-open'
-alias tmux='tmux -2'
 alias node='env NODE_NO_READLINE=1 rlwrap -pGreen node'
 
 # silence gvim console messages
@@ -12,14 +11,4 @@ function gvim {
 # silence emacs console messages
 function emacs {
     emacs24 $@ 2>> ~/.xsession-errors & disown
-}
-
-function tmux-new-from-dir-name {
-    if [ -z $1 ]; then
-        sessionName=$(basename $PWD | sed 's/\./_/g')
-    else
-        sessionName=$1
-    fi
-    tmux new-session -As "$sessionName"
-    #tmux new-session -As `basename $PWD`
 }

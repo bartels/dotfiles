@@ -1,0 +1,19 @@
+alias tmux='tmux -2'
+
+function tmux-new-from-dir-name {
+    DIR=$PWD
+    if [ -z $1 ]; then
+        sessionName=$(basename $DIR | sed 's/\./_/g')
+    else
+        sessionName=$1
+    fi
+    tmux new-session -As "$sessionName"
+
+    echo $CONFIG
+    if [ -f $CONIG ]; then
+        CONFIG="$PWD/.tmux.conf"
+    fi
+}
+
+# Start tmux with
+alias tnew='tmux-new-from-dir-name'
