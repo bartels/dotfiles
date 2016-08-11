@@ -1,13 +1,13 @@
-# Handles exporting environment variables used by aws & ec2 tools.
-# Environment variables should be put in a file at ~/.aws/name/export
-aws_export() {
-    source ~/.aws/$1/export
+# Handles settings the default profile for awscli tools (~/.aws directory)
+# See http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+aws_profile() {
+    export AWS_DEFAULT_PROFILE=$1
 }
-_aws_export_complete() {
+_aws_profile_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=( $(ls -l ~/.aws/ | grep ^d | awk '{print $NF}' | grep "$arg") )
+    COMPREPLY=( $(grep -E '^\[' ~/.aws/credentials  | sed 's/\[//' | sed 's/\]//') )
 }
-complete -o default -o nospace -F _aws_export_complete aws_export
+complete -o default -o nospace -F _aws_profile_complete aws_profile
 
 # completion for aws cli
 complete -C aws_completer aws
