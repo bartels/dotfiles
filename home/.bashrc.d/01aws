@@ -5,7 +5,7 @@ aws_profile() {
 }
 _aws_profile_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=( $(grep -E '^\[' ~/.aws/credentials  | sed 's/\[//' | sed 's/\]//') )
+    COMPREPLY=( $(grep -E '^\[' ~/.aws/credentials  | sed 's/\[//' | sed 's/\]//' | grep "$arg") )
 }
 complete -o default -o nospace -F _aws_profile_complete aws_profile
 
