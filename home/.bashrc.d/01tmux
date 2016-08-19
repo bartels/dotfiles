@@ -1,19 +1,35 @@
 alias tmux='tmux -2'
 
-function tmux-new-from-dir-name {
+SESSION_INIT_DIR="$HOME/.tmux.conf.d/sessions"
+
+function tmux-start-new-session {
+    # Make session name from directory if not given
     DIR=$PWD
     if [ -z $1 ]; then
-        sessionName=$(basename $DIR | sed 's/\./_/g')
+        SESSION_NAME=$(basename $DIR | sed 's/\./_/g')
     else
-        sessionName=$1
+        SESSION_NAME=$1
     fi
-    tmux new-session -As "$sessionName"
 
-    echo $CONFIG
-    if [ -f $CONIG ]; then
-        CONFIG="$PWD/.tmux.conf"
+    # Check for session config file
+    if [ -f "$SESSION_INIT_DIR/$SESSION_NAME" ]; then
+        SESSION_INIT_FILE="$SESSION_INIT_DIR/$SESSION_NAME"
+        echo "using init file: $SESSION_INIT_FILE"
+    fi
+
+    # Start new session, or attach to existing one
+    tmux has-session -t "$SESSION_NAME" > /dev/null
+    if [ $? != 0 ]; then
+        echo "starting new session $SESSION_NAME"
+        if [ $SESSION_INIT_FILE ]; then
+            tmux new-session -s "$SESSION_NAME" \; source-file "$SESSION_INIT_FILE"
+        else
+            tmux new-session -s "$SESSION_NAME"
+        fi
+    else
+        tmux attach -t "$SESSION_NAME"
     fi
 }
 
 # Start tmux with
-alias tnew='tmux-new-from-dir-name'
+alias tnew='tmux-start-new-session'
