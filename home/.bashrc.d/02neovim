@@ -1,5 +1,15 @@
 if type nvim 2> /dev/null > /dev/null; then
     export EDITOR=nvim
+    export VISUAL=$EDITOR
     alias vim='nvim'
     alias vimdiff='vim -d'
+
+    # Use nvim as man pagaer
+    export MANPAGER="bash -c \"nvim -u NORC \
+     --cmd 'set rtp+=~/.vim/plugged/vim-tmux-navigator' \
+        -c 'set ft=man' \
+        -c 'set clipboard=unnamedplus' \
+        -c 'colorscheme ron' \
+        -c ':redraw' \
+        </dev/tty <(col -b)\""
 fi 
