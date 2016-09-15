@@ -100,3 +100,10 @@ set -o vi
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PAGER=less
+export MANPAGER="bash -c \"nvim -u NORC \
+ --cmd 'set rtp+=~/.vim/plugged/vim-tmux-navigator' \
+    -c 'set ft=man' \
+    -c 'set clipboard=unnamedplus' \
+    -c 'colorscheme ron' \
+    -c ':redraw' \
+    </dev/tty <(col -b)\""
