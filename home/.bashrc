@@ -84,6 +84,14 @@ fi
 
 # CUSTOM ADDITIONS BELOW #################
 
+# vi mode
+set -o vi
+
+# environment
+export EDITOR=vim
+export VISUAL=$EDITOR
+export PAGER=less
+
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
     for f in ~/.bashrc.d/*; do
@@ -92,11 +100,3 @@ if [ -d ~/.bashrc.d ]; then
         fi
     done
 fi
-
-# vi mode
-set -o vi
-
-# environment
-export EDITOR=vim
-export VISUAL=$EDITOR
-export PAGER=less
