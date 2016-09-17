@@ -21,7 +21,7 @@ djstart() {
                DJANGO_ENV=${DJANGO_ENV:-"dev"}
         workon $project
         if [ $? -eq 0 ]; then
-            tmux new-session -As $project
+            tmux-start-new-session "$project"
         fi
     )
 
