@@ -2,8 +2,11 @@
 
 alias tmux='tmux -2'
 
+# Directory where session init config files are held
 SESSION_INIT_DIR="$HOME/.tmux.conf.d/sessions"
 
+# Starts a new tmux session with the given name, or defaults to using the name
+# of the current directory
 function tmux-start-new-session {
     # Make session name from directory if not given
     DIR=$PWD
@@ -14,16 +17,18 @@ function tmux-start-new-session {
     fi
 
     # Check for session config file
-    if [ -f "$SESSION_INIT_DIR/$SESSION_NAME" ]; then
+    if [ -f "$DIR/.tmuxrc" ]; then
+        SESSION_INIT_FILE="$DIR/.tmuxrc"
+    elif [ -f "$SESSION_INIT_DIR/$SESSION_NAME" ]; then
         SESSION_INIT_FILE="$SESSION_INIT_DIR/$SESSION_NAME"
-        echo "using init file: $SESSION_INIT_FILE"
     fi
 
     # Start new session, or attach to existing one
     tmux has-session -t "$SESSION_NAME" > /dev/null
     if [ $? != 0 ]; then
         echo "starting new session $SESSION_NAME"
-        if [ $SESSION_INIT_FILE ]; then
+        if [ "$SESSION_INIT_FILE" ]; then
+            echo "using init file: $SESSION_INIT_FILE"
             tmux new-session -s "$SESSION_NAME" \; source-file "$SESSION_INIT_FILE"
         else
             tmux new-session -s "$SESSION_NAME"
