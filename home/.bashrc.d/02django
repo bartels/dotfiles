@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 # Django dev environment setup
 djstart() {
     module="$(basename $PWD)"

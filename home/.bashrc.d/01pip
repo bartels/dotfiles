@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 # pip bash completion start
 _pip_completion()
 {

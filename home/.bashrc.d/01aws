@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 # Handles settings the default profile for awscli tools (~/.aws directory)
 # See http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 aws_profile() {

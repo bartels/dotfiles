@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 if type nvim 2> /dev/null > /dev/null; then
     export EDITOR=nvim
     export VISUAL=$EDITOR

@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 alias tmux='tmux -2'
 
 SESSION_INIT_DIR="$HOME/.tmux.conf.d/sessions"

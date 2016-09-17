@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 alias top='htop'
 alias service='sudo service'
 alias open='xdg-open'

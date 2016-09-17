@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 # debian development environemtn variables
 export DEBFULLNAME="Eric Bartels"
 export DEBEMAIL="ebartels@gmail.com"
