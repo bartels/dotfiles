@@ -2,15 +2,15 @@
 
 # Django dev environment setup
 djstart() {
-    module="$(basename $PWD)"
-    if [ -z $1 ]; then
+    module="$(basename "$(pwd -P)")"
+    if [ -z "$1" ]; then
         project="$module"
     else
         project=$1
     fi
 
     # get absolute path
-    pushd $(pwd)/../ > /dev/null
+    pushd "$(pwd)/../" > /dev/null
     RUNPATH="$(pwd -P)"
     popd > /dev/null
 
@@ -19,7 +19,7 @@ djstart() {
         export PYTHONPATH="$RUNPATH:$PYTHONPATH" \
                DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
                DJANGO_ENV=${DJANGO_ENV:-"dev"}
-        workon $project
+        workon "$project"
         if [ $? -eq 0 ]; then
             tmux-start-new-session "$project"
         fi

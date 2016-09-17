@@ -10,8 +10,8 @@ SESSION_INIT_DIR="$HOME/.tmux.conf.d/sessions"
 function tmux-start-new-session {
     # Make session name from directory if not given
     DIR=$PWD
-    if [ -z $1 ]; then
-        SESSION_NAME=$(basename $DIR | sed 's/\./_/g')
+    if [ -z "$1" ]; then
+        SESSION_NAME=$(basename "$DIR" | sed 's/\./_/g')
     else
         SESSION_NAME=$1
     fi
