@@ -1,12 +1,14 @@
 dotfiles
 ========
 
-This is my personal set of dotfiles.  Nothing special.
+This is my personal set of dotfiles, uses [GNU stow](https://www.gnu.org/software/stow/) for managing symlinks.
 
 
 Installation
 ===========
 
-Running `bin/install.sh` will symlink the files from "home" directory into the
-user's $HOME directory.  For existing files, the user will be asked whether to
-skip, or whether to back up and replace.
+```
+git clone git@github.com:bartels/dotfiles.git .dotfiles
+cd .dotfiles
+./install.sh
+```
