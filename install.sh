@@ -2,7 +2,7 @@
 set -e
 
 # check for stow
-type stow 2> /dev/null > /dev/null || echo 'Install "stow" to install files (e.g. apt-get install stow)'
+type stow 2> /dev/null > /dev/null || { echo 'stow: command not found (install stow)'; exit 1; }
 
 mkdir -p ~/.config ~/.bashrc.d/
 
