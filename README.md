@@ -10,5 +10,6 @@ Installation
 ```
 git clone git@github.com:bartels/dotfiles.git .dotfiles
 cd .dotfiles
+git submodule update --init
 ./install.sh
 ```
