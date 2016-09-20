@@ -1,20 +1,12 @@
 # vi: ft=sh
-
-alias top='htop'
 alias service='sudo service'
 alias open='xdg-open'
 alias node='env NODE_NO_READLINE=1 rlwrap -pGreen node'
 
+if type htop 2> /dev/null > /dev/null; then
+    alias top='htop'
+fi
+
 # ansible aliases
 alias ansible='vaultify ansible'
 alias ansible-playbook='vaultify ansible-playbook'
-
-# silence gvim console messages
-function gvim {
-    vim -g $@ 2>> ~/.xsession-errors
-}
-
-# silence emacs console messages
-function emacs {
-    emacs24 $@ 2>> ~/.xsession-errors & disown
-}
