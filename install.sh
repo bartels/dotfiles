@@ -6,5 +6,5 @@ type stow 2> /dev/null > /dev/null || echo 'Install "stow" to install files (e.g
 
 # Uses stow to install symlinked files
 for dir in */; do
-    stow -v --target="$HOME" "$dir"
+    stow -v --target="$HOME" "$@" "$dir"
 done
