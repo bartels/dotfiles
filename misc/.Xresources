@@ -30,10 +30,15 @@
 *color15: #ffffff
 
 !*.cursorColor: #ffffff
+!
+!!!!!!!!!!!
+!! xterm
+!!!!!!!!!!!
+xterm*faceName: DejaVu Sans Mono for Powerline:size=10
 
 
 !!!!!!!!!!!
-!! URxvt
+!! urxvt
 !!!!!!!!!!!
 URxvt.depth: 32
 URxvt.geometry: 150x50

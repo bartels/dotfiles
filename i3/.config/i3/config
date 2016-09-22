@@ -16,10 +16,6 @@ set $mod Mod4
 # font pango:monospace 8
 font pango:DejaVu Sans 10
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -38,7 +34,8 @@ bindsym $mod+Return exec xterm
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+r exec dmenu_run
+bindsym $mod+r exec rofi -show run -lines 3 -eh 2 -width 100 -padding 100 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -72,10 +69,10 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
-bindsym $mod+Shift+v split h
+bindsym $mod+Shift+v split v
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -126,8 +123,10 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -155,13 +154,54 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# start resize
+bindsym $mod+x mode "resize"
 
+# Custom Keybindings
+bindsym Mod1+Tab focus right
+
+# thin borders
+hide_edge_borders both
+
+#new_window 1pixel
+
+# colors
+#set $bg-color               #2f343f
+set $bg-color               #555555
+set $inactive-bg-color      #3C3B37
+set $text-color             #ffffff
+set $inactive-text-color    #757575
+set $urgent-bg-color        #E53935
+set $indicator              #00ff00
+
+# window colors
+#                               border              background          text                  indicator
+client.focused                  $bg-color           $bg-color           $text-color           $indicator
+client.unfocused                $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator
+client.focused_inactive         $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator
+client.urgent                   $urgent-bg-color    $urgent-bg-color    $text-color           $indicator
+
+
+# lock screen
 bindsym Control+Mod1+l exec i3lock -c 1a1a1a
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+set $status-bg-color #3C3B37
 bar {
-        status_command i3status
-        position top
+    #status_command i3status
+    status_command i3blocks
+    position top
+    colors {
+        background $status-bg-color
+        separator $inactive-text-color
+        #                  border             background         text
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $status-bg-color   $status-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
 }
+
+
+# Startup
+#exec --no-startup-id compton -f
