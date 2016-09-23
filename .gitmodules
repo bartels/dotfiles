@@ -1,6 +1,7 @@
 [submodule "vim/.vim"]
 	path = vim/.vim
 	url = git@github.com:bartels/vimconfig.git
+	branch = master
 [submodule "fzf/.fzf"]
 	path = fzf/.fzf
 	url = https://github.com/junegunn/fzf.git
