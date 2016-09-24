@@ -1,8 +1,6 @@
 $include /etc/inputrc
 
 # completion options
-set completion-ignore-case on
-set completion-map-case on
 set completion-query-items 400
 set colored-stats on
 set mark-directories on
