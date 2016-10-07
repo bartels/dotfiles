@@ -2,17 +2,26 @@
 
 # Django dev environment setup
 djstart() {
-    module="$(basename "$(pwd -P)")"
+    # Get the settings.py file path
+    dir="$(pwd -P)"
+    settings_path=$(dirname "$(find "$dir" -name settings.py)")
+
+    # Get the python module name
+    module=$(basename "$settings_path")
+    if [ -z "$module" ]; then
+        echo "Could not find settings.py, exiting..."
+        return 1
+    fi
+
+    # Project name is same as module, or can be passed in as an argument
     if [ -z "$1" ]; then
         project="$module"
     else
         project=$1
     fi
 
-    # get absolute path
-    pushd "$(pwd)/../" > /dev/null
-    RUNPATH="$(pwd -P)"
-    popd > /dev/null
+    # get absolute module path
+    RUNPATH=$(realpath "$settings_path/../")
 
     # Run a subprocess
     (
