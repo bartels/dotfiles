@@ -9,7 +9,9 @@
 	co = checkout
 	st = status
 	br = branch
-	lg = log --graph --all --decorate --abbrev-commit
+	lg = log --graph --all
+	lgs = log --oneline
+	lgg = log --oneline --graph
 	edit = "!$EDITOR `git ls-files -m` -p"
 [color]
 	diff = auto
@@ -24,3 +26,8 @@
 	remote = white
 [heroku]
 	account = personal
+[log]
+	decorate = auto
+	abbrevCommit = true
+[status]
+	short = true
