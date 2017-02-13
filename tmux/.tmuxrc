@@ -1,0 +1,6 @@
+split-window -h 'htop; bash'
+kill-pane -t 1
+split-window -h 'watch -t sensors; bash'
+split-window -v 'journalctl -f'
+rename-window -t 1 'status'
+resize-pane -t 2 -y 14 -x 100
