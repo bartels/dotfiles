@@ -31,3 +31,5 @@
 	abbrevCommit = true
 [status]
 	short = true
+[merge "ours"]
+	driver = true
