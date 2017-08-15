@@ -1,5 +1,7 @@
 # vi: ft=sh
 
+. ~/.bash_completions/django_bash_completion
+
 # Django dev environment setup
 djstart() {
     # Get the settings.py file path
