@@ -27,10 +27,21 @@ djstart() {
 
     # Run a subprocess
     (
-        export PYTHONPATH="$RUNPATH:$PYTHONPATH" \
+        # Add node_modules bin dir to path if it exists
+        if [ -d node_modules ]; then
+            PATH="$dir/node_modules/.bin":$PATH
+        fi
+
+        # Export env variables
+        export PATH=$PATH \
+               PYTHONPATH="$RUNPATH:$PYTHONPATH" \
                DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
                DJANGO_ENV=${DJANGO_ENV:-"dev"}
+
+        # Start virtualenv
         workon "$project"
+
+        # start tmux session
         if [ $? -eq 0 ]; then
             tmux-start-new-session "$project"
         fi
