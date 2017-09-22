@@ -58,7 +58,11 @@ complete -o default -o nospace -F _djstart_complete djstart
 
 # Shortcut for running django-admin.py
 dj() {
-    django-admin.py "$@"
+    if hash django-admin 2>/dev/null; then
+        django-admin "$@"
+    else
+        django-admin.py "$@"
+    fi
 }
 
 # dj command completion
