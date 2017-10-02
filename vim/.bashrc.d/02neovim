@@ -7,7 +7,7 @@ if type nvim 2> /dev/null > /dev/null; then
     alias vimdiff='vim -d'
 
     # Use nvim as man pagaer
-    export MANPAGER="bash -c \"nvim -u NORC \
+    export MANPAGER="bash -c \"nvim -u NORC -i NONE \
      --cmd 'set rtp+=~/.vim/plugged/vim-tmux-navigator' \
         -c 'set ft=man' \
         -c 'set clipboard=unnamedplus' \
