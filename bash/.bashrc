@@ -94,6 +94,7 @@ set -o vi
 export EDITOR=vim
 export VISUAL=$EDITOR
 export PAGER=less
+export GPG_TTY='tty'
 
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
