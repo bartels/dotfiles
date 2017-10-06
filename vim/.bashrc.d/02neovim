@@ -4,6 +4,7 @@ if type nvim 2> /dev/null > /dev/null; then
     export EDITOR=nvim
     export VISUAL=$EDITOR
     alias vim='nvim'
+    alias vi='nvim -u NORC -i NONE'
     alias vimdiff='vim -d'
 
     # Use nvim as man pagaer
