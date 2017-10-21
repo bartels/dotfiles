@@ -38,6 +38,9 @@ djstart() {
                DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
                DJANGO_ENV=${DJANGO_ENV:-"dev"}
 
+        # dont' write .pyc files
+        export PYTHONDONTWRITEBYTECODE=1
+
         # Start virtualenv
         workon "$project"
 
