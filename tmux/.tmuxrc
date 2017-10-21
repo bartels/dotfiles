@@ -5,3 +5,4 @@ split-window -h 'watch -t sensors -A; bash'
 split-window -v 'journalctl -f'
 resize-pane -t 2 -y 17 -x 100
 rename-window -t 1 'status'
+select-pane -t 1
