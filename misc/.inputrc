@@ -23,7 +23,6 @@ $if mode=vi
     "\C-p": history-search-backward
     "\C-n": history-search-forward
     "\C-l": clear-screen
-    "\C-o": clear-screen
     "\C-a": beginning-of-line
     "\C-e": end-of-line
 $endif
