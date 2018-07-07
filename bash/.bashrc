@@ -95,6 +95,7 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 export PAGER=less
 export GPG_TTY='tty'
+export QUOTING_STYLE=literal
 
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
