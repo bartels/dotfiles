@@ -1,8 +1,8 @@
-split-window -h 'htop; bash'
+split-window -v 'htop; bash'
 kill-pane -t 1
-split-window -h 'watch -t sensors -A; bash'
-# split-window -v 'dmesg -w'
-split-window -v 'journalctl -f'
-resize-pane -t 2 -y 17 -x 100
+split-window -v 'watch -t sensors -A; bash'
+split-window -h 'journalctl -f'
+resize-pane -t 1 -y 43
+resize-pane -t 2 -x 64
 rename-window -t 1 'status'
 select-pane -t 1
