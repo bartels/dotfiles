@@ -1,0 +1,66 @@
+/* panel buttons */
+.xfce4-panel button.flat {
+    min-width: 26px;
+    padding: 0;
+}
+
+/* whisker menu - numix theme */
+.xfce4-panel #whiskermenu-button:checked {
+    background: #444;
+    border-color: #444;
+}
+
+#whiskermenu-window {
+    color: #eee;
+}
+
+#whiskermenu-window * {
+    border-color: #444;
+    outline: none;
+}
+
+#whiskermenu-window entry {
+    color: #eee;
+    caret-color: #eee;
+    background-color: #3c3c3c;
+    border-color: #575757;
+    margin: 4px 3px 0 3px;
+    -gtk-icon-style: symbolic;
+}
+
+#whiskermenu-window button {
+    color: #eee;
+    margin-right: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 4px;
+}
+
+#whiskermenu-window button:hover {
+    color: #eee;
+    background-color: #575757;
+}
+
+#whiskermenu-window button:checked {
+    color: #fff;
+    background-color: #F0544C;
+    border-color: #E44138;
+}
+
+#whiskermenu-window border {
+    color: #eee;
+    background-color: #444;
+    border-color: #444;
+}
+
+#whiskermenu-window treeview {
+    color: #eee;
+    background-color: #444;
+    border-right: solid 1px #575757;
+    padding: 2px 10px;
+}
+
+#whiskermenu-window treeview:hover {
+    color: #eee;
+    background-color: #575757;
+}

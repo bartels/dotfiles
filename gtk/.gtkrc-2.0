@@ -1,0 +1,8 @@
+style "pager"
+{
+        xthickness = 4
+        fg[ACTIVE] = "#ffffff"
+        bg[ACTIVE] = "#f0544c"
+        # bg[ACTIVE] = "#398ee7"
+}
+widget "*PagerButtons*"     style "pager"
