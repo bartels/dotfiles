@@ -97,9 +97,6 @@ export PAGER=less
 export GPG_TTY='tty'
 export QUOTING_STYLE=literal
 
-# qt app styling
-export QT_QPA_PLATFORMTHEME=gtk2
-
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
     for f in ~/.bashrc.d/*; do
