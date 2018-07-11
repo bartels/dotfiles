@@ -12,6 +12,8 @@ if type nvim 2> /dev/null > /dev/null; then
      --cmd 'set rtp+=~/.vim/plugged/vim-tmux-navigator' \
         -c 'set ft=man' \
         -c 'set clipboard=unnamedplus' \
+        -c 'set title' \
+        -c 'let &titleold = hostname()' \
         -c 'colorscheme ron' \
         -c ':redraw' \
         </dev/tty <(col -b)\""
