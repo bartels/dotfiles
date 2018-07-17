@@ -1,6 +1,6 @@
 style "pager"
 {
-        xthickness = 4
+        xthickness = 3
         fg[ACTIVE] = "#ffffff"
         bg[ACTIVE] = "#f0544c"
         # bg[ACTIVE] = "#398ee7"
