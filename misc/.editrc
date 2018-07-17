@@ -7,8 +7,5 @@ bind \\t rl_complete
 # clear screen
 bind ^L ed-clear-screen
 
-# alternative to escape
-bind "kj" vi-command-mode
-
 bind ^P ed-search-prev-history
 bind ^N ed-search-next-history
