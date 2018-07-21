@@ -100,7 +100,7 @@ export QUOTING_STYLE=literal
 # import files from .bashrc.d
 if [ -d ~/.bashrc.d ]; then
     for f in ~/.bashrc.d/*; do
-        if [ -x "$f" -a -f "$f" ]; then
+        if [ -x "$f" ] && [ -f "$f" ]; then
             . "$f"
         fi
     done
