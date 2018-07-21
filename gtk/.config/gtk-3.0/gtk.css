@@ -4,6 +4,17 @@
     padding: 0;
 }
 
+/* pager */
+#pager-12 button {
+    min-width: 0;
+    padding: 0 0.8ex;
+}
+
+#pager-12 button:checked {
+    color: #ffffff;
+    background: #f0544c;
+}
+
 /* whisker menu - numix theme */
 .xfce4-panel #whiskermenu-button:checked {
     background: #444;
