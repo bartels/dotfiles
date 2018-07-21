@@ -47,9 +47,9 @@ xterm*|rxvt*)
 esac
 
 # remove build-dep installed packages
-function aptitude-remove-dep {
+function aptitude-remove-build-dep {
     if [ "$1" == "" ]; then
-        echo "Usage: aptitude-remove-dep PACKAGE_NAME"
+        echo "Usage: aptitude-remove-build-dep PACKAGE_NAME"
         return;
     fi
     aptitude markauto $(apt-cache showsrc "$1" | \
