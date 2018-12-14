@@ -10,3 +10,10 @@ fi
 # ansible aliases
 alias ansible='vaultify ansible'
 alias ansible-playbook='vaultify ansible-playbook'
+
+# Watch file changes and run flow
+flow-watch() {
+    path=$1 || "."
+    flow status $2;
+    fswatch -e "/\." -i ".*\.js" -o "$path" | xargs -n1 -I{} flow status $2;
+}
