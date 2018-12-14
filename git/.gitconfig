@@ -12,6 +12,7 @@
 	lg = log --graph --all
 	lgs = log --oneline
 	lgg = log --oneline --graph
+	ls = ls-files
 	edit = "!$EDITOR `git ls-files -m` -p"
 [color]
 	diff = auto
