@@ -1,0 +1,33 @@
+# vi: ft=sh
+# shellcheck disable=SC1090
+
+# completion for kubectl, minikube, helm
+type kubectl > /dev/null 2>&1 && source <(kubectl completion bash)
+type minikube > /dev/null 2>&1 && source <(minikube completion bash)
+type helm > /dev/null 2>&1 && source <(helm completion bash)
+
+# kubectl config
+export KUBECONFIG=~/.kube/config:~/.kube/artcodehost-k8s-do-nyc1-kubeconfig.yaml
+
+# completion for kustomize command
+_kustomize_complete() {
+    local cur prev opts
+    opts="build config edit help version"
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD - 1]}"
+    COMPREPLY=()
+    if [ "${prev}" == "kustomize" ]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+    elif [ "${prev}" == "help" ]; then
+        compopt -o nospace
+        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+    elif [ "${prev}" == "edit" ]; then
+        local edit_opts="add set"
+        COMPREPLY=( $(compgen -W "${edit_opts}" -- "${cur}") )
+    elif [ "${prev}" == "build" ]; then
+        compopt -o nospace -o default
+    fi
+    return 0
+}
+
+complete -F _kustomize_complete kustomize
