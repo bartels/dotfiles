@@ -7,7 +7,7 @@ type minikube > /dev/null 2>&1 && source <(minikube completion bash)
 type helm > /dev/null 2>&1 && source <(helm completion bash)
 
 # kubectl config
-export KUBECONFIG=~/.kube/config:~/.kube/artcodehost-k8s-do-nyc1-kubeconfig.yaml
+export KUBECONFIG=~/.kube/config:~/.kube/artcodehost-k8s-do-sf2-kubeconfig.yaml
 
 # completion for kustomize command
 _kustomize_complete() {
