@@ -45,3 +45,6 @@ tmux-start-new-session() {
 
 # Start tmux with
 alias tnew='tmux-start-new-session'
+
+# Most hosts do not have termcap for tmux, so we use screen-256color instead
+[ "$TMUX" ] && alias ssh='TERM=screen-256color ssh'
