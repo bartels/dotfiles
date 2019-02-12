@@ -16,17 +16,32 @@ _kustomize_complete() {
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD - 1]}"
     COMPREPLY=()
-    if [ "${prev}" == "kustomize" ]; then
-        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-    elif [ "${prev}" == "help" ]; then
-        compopt -o nospace
-        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-    elif [ "${prev}" == "edit" ]; then
-        local edit_opts="add set"
-        COMPREPLY=( $(compgen -W "${edit_opts}" -- "${cur}") )
-    elif [ "${prev}" == "build" ]; then
-        compopt -o nospace -o default
-    fi
+
+    case "${prev}" in
+        "kustomize")
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            ;;
+
+        "help")
+            compopt -o nospace
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            ;;
+
+        "edit")
+            local edit_opts="add fix set"
+            COMPREPLY=( $(compgen -W "${edit_opts}" -- "${cur}") )
+            ;;
+
+        "fix")
+            if [ "${COMP_WORDS[COMP_CWORD - 2]}" == "edit" ]; then
+                compopt -o nospace -o default
+            fi
+            ;;
+
+        "build")
+            compopt -o nospace -o default
+            ;;
+    esac
     return 0
 }
 
