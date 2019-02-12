@@ -2,9 +2,6 @@
 
 alias tmux='tmux -2'
 
-# Directory where session init config files are held
-SESSION_INIT_DIR="$HOME/.tmux.conf.d/sessions"
-
 # Starts a new tmux session with the given name, or defaults to using the name
 # of the current directory
 tmux-start-new-session() {
@@ -19,8 +16,6 @@ tmux-start-new-session() {
     # Check for session config file
     if [ -f "$DIR/.tmuxrc" ]; then
         SESSION_INIT_FILE="$DIR/.tmuxrc"
-    elif [ -f "$SESSION_INIT_DIR/$SESSION_NAME" ]; then
-        SESSION_INIT_FILE="$SESSION_INIT_DIR/$SESSION_NAME"
     fi
 
     # Add node_modules bin dir to path if it exists
