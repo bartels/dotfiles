@@ -1,7 +1,7 @@
 send-keys -t 1 'htop' Enter
 split-window -v 'watch -t sensors -A; bash'
 split-window -h 'journalctl -f'
-resize-pane -t 1 -y 43
+resize-pane -t 1 -y 42
 resize-pane -t 2 -x 63
 rename-window -t 1 'status'
 select-pane -t 1
