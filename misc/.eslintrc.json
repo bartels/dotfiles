@@ -1,22 +1,22 @@
 {
-    "env": {
-        "node": true,
-        "es6": true
-    },
-    "extends": "eslint:recommended",
-    "rules": {
-        "linebreak-style": [2, "unix"],
-        "quotes": "off",
-        "semi": "off",
-        "camelcase": "off",
-        "comma-dangle": "off",
-        "no-console": "off",
-        "space-before-function-paren": "off",
-        "eqeqeq": "warn",
-        "curly": "warn",
-        "space-before-blocks": "warn",
-        "no-undef": "error",
-        "no-loop-func": "error",
-        "no-unused-vars": [2, {"vars": "all", "args": "none"}]
-    }
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "quotes": "off",
+    "semi": "off",
+    "camelcase": "off",
+    "comma-dangle": "off",
+    "no-console": "off",
+    "space-before-function-paren": "off",
+    "eqeqeq": "warn",
+    "curly": ["warn", "multi"],
+    "space-before-blocks": "warn",
+    "no-undef": "error",
+    "no-loop-func": "error",
+    "no-unused-vars": [2, {"vars": "all", "args": "none"}]
+  }
 }
