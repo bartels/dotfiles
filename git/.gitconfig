@@ -34,3 +34,5 @@
 	short = true
 [merge "ours"]
 	driver = true
+[diff]
+	algorithm = histogram
