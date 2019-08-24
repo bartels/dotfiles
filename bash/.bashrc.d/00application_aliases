@@ -1,4 +1,5 @@
 # vi: ft=sh
+# shellcheck shell=bash
 alias service='sudo service'
 alias open='xdg-open'
 alias node='env NODE_NO_READLINE=1 rlwrap -pGreen node'
@@ -6,10 +7,6 @@ alias node='env NODE_NO_READLINE=1 rlwrap -pGreen node'
 if type htop 2> /dev/null > /dev/null; then
     alias top='htop'
 fi
-
-# ansible aliases
-alias ansible='vaultify ansible'
-alias ansible-playbook='vaultify ansible-playbook'
 
 # Watch file changes and run flow
 flow-watch() {
