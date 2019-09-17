@@ -9,7 +9,7 @@ if type nvim 2> /dev/null > /dev/null; then
 
     # Use nvim as man pagaer
     export MANPAGER="bash -c \"nvim -u NORC -i NONE \
-     --cmd 'set rtp+=~/.vim/plugged/vim-tmux-navigator' \
+     --cmd 'set rtp+=~/.vim/plugged/vim-tmux-pilot' \
         -c 'set ft=man' \
         -c 'set clipboard=unnamedplus' \
         -c 'set title' \
