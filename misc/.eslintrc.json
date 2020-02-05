@@ -1,7 +1,14 @@
 {
   "env": {
+    "browser": true,
+    "commonjs": true,
     "node": true,
     "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "jsx": true
   },
   "extends": "eslint:recommended",
   "rules": {
@@ -12,11 +19,14 @@
     "comma-dangle": "off",
     "no-console": "off",
     "space-before-function-paren": "off",
-    "eqeqeq": "warn",
-    "curly": ["warn", "multi"],
-    "space-before-blocks": "warn",
+    "eqeqeq": "error",
+    "curly": ["error", "multi"],
+    "space-before-blocks": "error",
     "no-undef": "error",
     "no-loop-func": "error",
-    "no-unused-vars": [2, {"vars": "all", "args": "none"}]
+    "no-shadow": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": [2, {"vars": "all", "args": "none"}],
+    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }]
   }
 }
