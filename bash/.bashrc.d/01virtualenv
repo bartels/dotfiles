@@ -1,6 +1,6 @@
 # vi: ft=sh
 
 # Virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$HOME/.local/virtualenvs
+export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
 source ~/.local/bin/virtualenvwrapper.sh 2>/dev/null
