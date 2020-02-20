@@ -3,60 +3,73 @@
 
 . ~/.bash_completions/django_bash_completion
 
-# Django dev environment setup
+# Shortcut for starting a Django development environment.
+# Will start a virtualenv and tmux session and try to autodiscover
+# settings.py and the python package directory
 djstart() {
-    # Get the settings.py file path
-    dir="$(pwd -P)"
-    settings_path=$(dirname "$(find "$dir" -name settings.py)")
+    # Name of a virtualenv
+    project="$1"
 
-    # Get the python module name
-    module=$(basename "$settings_path")
-    if [ -z "$module" ]; then
-        echo "Could not find settings.py, exiting..."
+    if [ "$project" ]; then
+        # Start virtualenv
+        # This will auto-cd into the project directory if configured to do so
+        # by virtualenvwrapper.
+        workon "$project"
+    fi
+
+    # Project directory is cwd
+    project_dir="$PWD"
+
+    # Discover settings.py file by searching cwd
+    settings_path=$(fd -d 2 settings.py "$project_dir" | head -1)
+    if [ -z "$settings_path" ]; then
+        echo "Could not find a settings.py file, exiting..."
         return 1
     fi
 
-    # Project name is same as module, or can be passed in as an argument
-    if [ -z "$1" ]; then
-        project="$module"
-    else
-        project=$1
+    # The project's python package name
+    package_dir=$(dirname "$settings_path")
+    module_name=$(basename "$package_dir")
+
+    # If we weren't given a project name as an argument, we'll try to use the
+    # module name. For this to work, there will need to be an existing
+    # virtualenv with the same name as the project's main python package.
+    if [ -z "$project" ]; then
+        project="$module_name"
+        echo "Found $settings_path: Assuming virtualenv is \"$project\""
+        workon "$project"
+    fi
+
+    # Add node_modules bin dir to path if it exists
+    if [ -d node_modules ]; then
+        PATH="$project_dir/node_modules/.bin":$PATH
     fi
 
     # get absolute module path
-    RUNPATH=$(realpath "$settings_path/../")
+    RUNPATH=$(realpath "$package_dir/../")
 
-    # Run a subprocess
-    (
-        # Add node_modules bin dir to path if it exists
-        if [ -d node_modules ]; then
-            PATH="$dir/node_modules/.bin":$PATH
-        fi
+    # Export env variables
+    export PATH=$PATH \
+           PYTHONPATH="$RUNPATH:$PYTHONPATH" \
+           DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module_name.settings"} \
+           DJANGO_ENV=${DJANGO_ENV:-"dev"}
 
-        # Export env variables
-        export PATH=$PATH \
-               PYTHONPATH="$RUNPATH:$PYTHONPATH" \
-               DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"$module.settings"} \
-               DJANGO_ENV=${DJANGO_ENV:-"dev"}
+    # dont' write .pyc files
+    export PYTHONDONTWRITEBYTECODE=1
 
-        # dont' write .pyc files
-        export PYTHONDONTWRITEBYTECODE=1
+    # start tmux session
+    if [ $? -eq 0 ]; then
+        tmux-start-new-session "$project"
+    fi
 
-        # Start virtualenv
-        workon "$project"
-
-        # start tmux session
-        if [ $? -eq 0 ]; then
-            tmux-start-new-session "$project"
-        fi
-    )
-
+    deactivate
+    echo "Bye"
 }
 
 # djstart command completion
 _djstart_complete() {
     arg="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=( $(ls -l $WORKON_HOME | grep ^d | awk '{print $NF}' | grep "$arg") )
+    COMPREPLY=( $(lsvirtualenv -b | grep "$arg") )
 }
 complete -o default -o nospace -F _djstart_complete djstart
 
