@@ -1,6 +1,7 @@
 # vi: ft=sh
 # shellcheck disable=SC1090
 
+# Enable django bash completion
 . ~/.bash_completions/django_bash_completion
 
 # Shortcut for starting a Django development environment.
@@ -84,7 +85,3 @@ dj() {
 
 # dj command completion
 complete -o default -F _django_completion dj
-
-
-# pyinvoke completion
-type invoke > /dev/null 2>&1 && source <(invoke --print-completion-script=bash)
