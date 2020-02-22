@@ -64,6 +64,7 @@ djstart() {
     fi
 
     deactivate
+    unset DJANGO_SETTINGS_MODULE
     echo "Bye"
 }
 
