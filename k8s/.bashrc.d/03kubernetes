@@ -58,4 +58,7 @@ _kubetail()
 
 complete -F _kubetail kubetail kt
 
-alias kt="kt --skip-colors 16,17,18,19,20,21,22,23,24,25,26,27,28,30,31"
+# Alias to skip colors for kubetail
+kt() {
+    $(which kt) "$1" --skip-colors 16,17,18,19,20,21,22,23,24,25,26,27,28,30,31
+}
