@@ -1,7 +1,4 @@
 # vi: ft=sh
 
-# Add poetry bin directory to PATH
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # Enable bash completion
 . ~/.bash_completions/poetry_bash_completion
