@@ -2,3 +2,4 @@
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--exact'
+export FZF_TMUX=1
