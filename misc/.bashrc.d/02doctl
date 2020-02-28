@@ -1,0 +1,2 @@
+# vi: ft=sh
+type doctl > /dev/null 2>&1 && source <(doctl completion bash)
