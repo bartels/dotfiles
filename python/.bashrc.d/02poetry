@@ -1,4 +1,0 @@
-# vi: ft=sh
-
-# Enable bash completion
-. ~/.bash_completions/poetry_bash_completion

@@ -1,9 +1,6 @@
 # vi: ft=sh
 # shellcheck disable=SC1090
 
-# Enable django bash completion
-. ~/.bash_completions/django_bash_completion
-
 # Shortcut for starting a Django development environment.
 # Will start a virtualenv and tmux session and try to autodiscover
 # settings.py and the python package directory

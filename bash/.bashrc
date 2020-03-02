@@ -99,10 +99,19 @@ export PAGER=less
 export GPG_TTY='tty'
 export QUOTING_STYLE=literal
 
-# import files from .bashrc.d
+# import files from ~/.bashrc.d
 if [ -d ~/.bashrc.d ]; then
     for f in ~/.bashrc.d/*; do
         if [ -x "$f" ] && [ -f "$f" ]; then
+            . "$f"
+        fi
+    done
+fi
+
+# source user completions from ~/.bash_completions
+if [ -d ~/.bash_completions ]; then
+    for f in ~/.bash_completions/*; do
+        if [ -f "$f" ]; then
             . "$f"
         fi
     done
