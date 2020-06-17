@@ -13,6 +13,7 @@ if type nvim 2> /dev/null > /dev/null; then
         -c 'set ft=man' \
         -c 'set clipboard=unnamedplus' \
         -c 'set title' \
+        -c 'set ignorecase smartcase' \
         -c 'let &titleold = hostname()' \
         -c 'colorscheme ron' \
         -c ':redraw' \
