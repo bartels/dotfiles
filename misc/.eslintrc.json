@@ -20,7 +20,7 @@
     "no-console": "off",
     "space-before-function-paren": "off",
     "eqeqeq": "error",
-    "curly": ["error", "multi"],
+    "curly": ["error", "multi-line"],
     "space-before-blocks": "error",
     "no-undef": "error",
     "no-loop-func": "error",
