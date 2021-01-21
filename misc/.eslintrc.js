@@ -1,17 +1,17 @@
-{
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "node": true,
-    "es6": true
+module.exports = {
+  env: {
+    browser: true,
+    commonjs: true,
+    node: true,
+    es6: true
   },
-  "parserOptions": {
-    "ecmaVersion": 2019,
-    "sourceType": "module",
-    "jsx": true
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: "module",
+    jsx: true
   },
-  "extends": "eslint:recommended",
-  "rules": {
+  extends: "eslint:recommended",
+  rules: {
     "linebreak-style": ["error", "unix"],
     "quotes": "off",
     "semi": "off",
